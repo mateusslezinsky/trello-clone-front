@@ -1,1 +1,25 @@
-<p>board-edit works!</p>
+<app-header>
+  <div class="main-container">
+    @for (list of tasks; track list) {
+      <div class="dnd-container">
+        <p class="dnd-title">{{ list.title }}</p>
+
+        <div
+          cdkDropList
+          class="dnd-list"
+          #dropListRef='cdkDropList'
+          [cdkDropListData]="list.list"
+          [cdkDropListConnectedTo]="refList"
+          (cdkDropListDropped)="drop($event)"
+        >
+          @for (item of list.list; track item) {
+            <div class="dnd-box" cdkDrag>{{ item }}</div>
+          }
+        </div>
+        <button mat-stroked-button color="basic">Add new</button>
+      </div>
+    }
+    <button mat-raised-button color="primary">Add new</button>
+  </div>
+</app-header>
+

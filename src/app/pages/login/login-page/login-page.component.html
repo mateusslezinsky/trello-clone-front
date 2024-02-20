@@ -1,1 +1,65 @@
-<p>login-page works!</p>
+<main class="main-container">
+  <section class="login-main-container">
+    <div class="sign-up-form-main-container">
+      <app-logo></app-logo>
+
+      <p class="login-form-title">Log in to continue</p>
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+
+        <mat-form-field class="login-form-inputs" [style.width.%]="100" appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input
+            name="email"
+            placeholder="Enter your e-mail"
+            matInput
+            ngModel
+            email
+            required
+          >
+          <mat-error>Please type a valid e-mail!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="login-form-inputs" [style.width.%]="100" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            name="password"
+            placeholder="Enter your password"
+            type="password"
+            minlength="6"
+            required
+            matInput
+            ngModel>
+
+        </mat-form-field>
+        <p class="error" *ngIf="error">{{error}}</p>
+        <button
+          color="primary"
+          class="login-form-button"
+          type="submit"
+          [disabled]="!form.valid"
+          mat-raised-button>
+          <div class="login-form-button-container">
+            <!--            <mat-spinner color="accent" diameter="20" *ngIf="loginService.loading"></mat-spinner>-->
+            <p>Continue</p>
+          </div>
+        </button>
+      </form>
+
+      <p class="login-form-continue-text">Or continue with</p>
+
+      <button mat-stroked-button class="login-form-google-button">
+        <div class="login-form-google-container">
+          <img class="login-form-google-icon"
+               alt=""
+               width="24"
+               height="24"
+               [ngSrc]="'https://aid-frontend.prod.atl-paas.net/atlassian-id/front-end/5.0.531/google-logo.5867462c.svg'"
+          >
+          <span>Google</span>
+        </div>
+      </button>
+      <a class="create-an-account" routerLink="/signup">Create an account</a>
+      <!--      <p>DISCLAIMER: this page is meant for portfolio purposes ONLY. This website is not associated in any way to Atlassian Corporation.</p>-->
+    </div>
+  </section>
+</main>

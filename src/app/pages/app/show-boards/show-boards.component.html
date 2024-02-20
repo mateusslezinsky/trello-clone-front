@@ -1,1 +1,10 @@
-<p>show-boards works!</p>
+<app-header>
+  <p>Your boards</p>
+  <div class="cardContainer">
+    <mat-card *ngFor="let board of boardsInfo | async">
+      <mat-card-content>
+        <a [routerLink]='["/b", board.id]'>{{ board.name }}</a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</app-header>

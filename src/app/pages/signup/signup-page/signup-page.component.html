@@ -1,1 +1,83 @@
-<p>signup-page works!</p>
+<main class="main-container">
+  <section class="sign-up-main-container">
+    <div class="sign-up-form-main-container">
+      <app-logo></app-logo>
+
+      <p class="sign-up-form-title">Sign in to continue</p>
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="sign-up-inputs-container">
+          <mat-form-field class="sign-up-form-inputs" [style.width.%]="100" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              name="name"
+              placeholder="Enter your name"
+              required
+              matInput
+              ngModel>
+
+          </mat-form-field>
+
+          <mat-form-field class="sign-up-form-inputs" [style.width.%]="100" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input
+              name="email"
+              placeholder="Enter your e-mail"
+              matInput
+              ngModel
+              email
+              required
+            >
+            <mat-error>Please enter a valid e-mail!</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="sign-up-form-inputs" [style.width.%]="100" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              name="password"
+              placeholder="Enter your password"
+              type="password"
+              minlength="6"
+              [ngModel]="password"
+              (ngModelChange)="onValueChange($event, 'password')"
+              required
+              matInput
+              >
+
+          </mat-form-field>
+
+
+          <mat-form-field class="sign-up-form-inputs" [style.width.%]="100" appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              name="confirm-password"
+              placeholder="Confirm your password"
+              type="password"
+              minlength="6"
+              [ngModel]="confirmPassword"
+              (ngModelChange)="onValueChange($event, 'confirmPassword')"
+              required
+              matInput
+              ngModel>
+
+          </mat-form-field>
+        </div>
+        <p class="error" *ngIf="error">{{error}}</p>
+        <p class="sign-up-disclaimer">By signing up, I accept the Terms of Service and acknowledge the Privacy
+          Policy.</p>
+        <button
+          color="primary"
+          class="sign-up-form-button"
+          type="submit"
+          [disabled]="!form.valid || !passwordsMatch"
+          mat-raised-button>
+          <div class="sign-up-form-button-container">
+            <mat-spinner color="accent" diameter="20" *ngIf="isLoading"></mat-spinner>
+            <p>Continue</p>
+          </div>
+        </button>
+      </form>
+      <a routerLink="/" class="already-have-account">Already have an account? Login</a>
+
+    </div>
+  </section>
+</main>

@@ -1,1 +1,52 @@
-<p>create-menu works!</p>
+<button mat-raised-button [matMenuTriggerFor]="menu" color="primary">Create</button>
+<mat-menu #menu="matMenu">
+  <div>
+    <div *ngIf="menuOption === 0">
+      <button mat-menu-item (click)="setMenuItem(1, $event)">
+        <mat-icon>dashboard</mat-icon>
+        <span>Create board</span>
+      </button>
+
+      <button mat-menu-item>
+        <mat-icon>dataset</mat-icon>
+        <span>Start from a template</span>
+      </button>
+
+      <button mat-menu-item>
+        <mat-icon>group</mat-icon>
+        <span>Create a desktop</span>
+      </button>
+    </div>
+    <div (click)="$event.stopPropagation()" *ngIf="menuOption === 1" class="first-option-main-container">
+      <div class="first-option-top-container">
+        <button (click)="setMenuItem(0, $event)" mat-icon-button>
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <p class="first-option-title">Create Board</p>
+
+        <button (click)="closeMenu()" mat-icon-button>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <div class="create-menu-svg-background">
+        <app-create-menu-svg/>
+      </div>
+      <form (ngSubmit)="submitBoardCreate(form)" #form="ngForm">
+        <mat-form-field class="form-inputs" [style.width.%]="100" appearance="outline">
+          <mat-label>Title</mat-label>
+          <input
+            name="title"
+            placeholder="Enter your board title"
+            type="text"
+            required
+            matInput
+            ngModel>
+        </mat-form-field>
+        <button color="primary" type="submit" mat-raised-button>
+          Create
+        </button>
+      </form>
+    </div>
+  </div>
+</mat-menu>

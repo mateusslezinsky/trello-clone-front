@@ -12,21 +12,29 @@
   font-style: normal;
 }
 
-html, body{
+html, body {
   margin: 0;
   height: 100%;
   width: 100%;
   font-family: "Open Sans", serif;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 
 a:link, a:visited {
   color: #0452CC;
   text-decoration: none;
 }
-a:hover{
+
+a:hover {
   text-decoration: underline;
   color: #3169FF;
 }

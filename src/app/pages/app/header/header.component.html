@@ -1,1 +1,32 @@
-<p>header works!</p>
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row class="toolbar-row">
+    <div class="toolbar-container">
+
+      <button mat-icon-button (click)="sidenavService.toggle()" class="example-icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a routerLink="/home">
+        <app-logo></app-logo>
+      </a>
+      <app-create-menu/>
+    </div>
+    <div class="toolbar-container">
+      <div>Hello, {{ (userInfo | async)?.name }}</div>
+      <button mat-raised-button color="primary" (click)="onLogout()">Logout</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="mainContainer">
+  <mat-drawer-container hasBackdrop>
+    <mat-drawer mode="side" [opened]="sidenavService.isOpen">
+      <button mat-menu-item (click)="navigateTo(['/b'])">
+        <mat-icon>dashboard</mat-icon>
+        <span>My boards</span>
+      </button>
+
+    </mat-drawer>
+    <mat-drawer-content>
+      <ng-content></ng-content>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
