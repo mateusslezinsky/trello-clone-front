@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url("./assets/fonts/Open_Sans/OpenSans-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("./assets/fonts/Open_Sans/OpenSans-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+html, body{
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Open Sans", serif;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a:link, a:visited {
+  color: #0452CC;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+  color: #3169FF;
+}
